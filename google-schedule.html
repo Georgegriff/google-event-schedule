@@ -1,0 +1,55 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<script src="../jquery/dist/jquery.min.js"></script>
+<script src="../moment/min/moment.min.js"></script>
+<script src="../fullcalendar/dist/fullcalendar.min.js"></script>
+
+<dom-module id="google-schedule">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <div id="fullCalendar"></div>
+  </template>
+
+  <script>
+    /**
+     * `google-schedule`
+     * google event scheduler
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class GoogleSchedule extends Polymer.Element {
+      static get is() { return 'google-schedule'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'google-schedule'
+          }
+        };
+      }
+
+       ready() {
+        super.ready();
+        this.defaultConfiguration =  {
+            weekends : false,
+            defaultView : "agendaWeek"
+          };
+        this.initialiseFullCalendar();
+      }
+
+      initialiseFullCalendar() {
+        let calendar = this.$.fullCalendar;
+        this._scheduler = jQuery(calendar);
+        this._scheduler.fullCalendar(this.defaultConfiguration);
+      }
+    }
+
+    window.customElements.define(GoogleSchedule.is, GoogleSchedule);
+  </script>
+</dom-module>

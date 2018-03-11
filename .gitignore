@@ -1,0 +1,10 @@
+.tmp
+node_modules
+bower_components
+npm-debug.log
+*.tar.gz
+*.tar
+coverage/*
+test-report.xml
+out/
+build
